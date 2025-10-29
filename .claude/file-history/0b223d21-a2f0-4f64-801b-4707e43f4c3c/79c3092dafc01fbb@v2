@@ -1,0 +1,51 @@
+# Sensitive files
+.env
+.env.*
+key_store.json
+*.key
+*.pem
+.ssh/
+wallet-gen/
+
+# Node modules
+node_modules/
+.npm/
+
+# Build outputs
+out/
+cache/
+lib/
+.cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+*.log
+
+# Foundry/Forge
+cache/
+out/
+broadcast/
+
+# User-specific files
+.bash_history
+.sudo_as_admin_successful
+.motd_shown
+.wget-hsts
+.landscape/
+
+# Config directories
+.bun/
+.cargo/
+.rustup/
+.nvm/
+.local/
+.config/
+.drosera/
+.foundry/
+.nexus/
+.soundness/
+.claude.json.backup
