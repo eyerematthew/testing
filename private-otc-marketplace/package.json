@@ -1,0 +1,27 @@
+{
+  "name": "private-otc-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "chain": "pnpm --filter ./packages/hardhat chain",
+    "compile": "pnpm --filter ./packages/hardhat compile",
+    "deploy:localhost": "pnpm --filter ./packages/hardhat deploy:localhost",
+    "deploy:sepolia": "pnpm --filter ./packages/hardhat deploy:sepolia",
+    "start": "pnpm --filter ./packages/nextjs dev",
+    "build": "pnpm --filter ./packages/nextjs build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}
