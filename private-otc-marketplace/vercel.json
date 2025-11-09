@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd packages/nextjs && pnpm build",
-  "devCommand": "cd packages/nextjs && pnpm dev",
+  "buildCommand": "cd private-otc-marketplace/packages/nextjs && pnpm build",
+  "devCommand": "cd private-otc-marketplace/packages/nextjs && pnpm dev",
   "installCommand": "pnpm install",
   "framework": null,
-  "outputDirectory": "packages/nextjs/.next"
+  "outputDirectory": "private-otc-marketplace/packages/nextjs/.next"
 }
