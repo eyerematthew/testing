@@ -49,3 +49,4 @@ broadcast/
 .nexus/
 .soundness/
 .claude.json.backup
+.claude/

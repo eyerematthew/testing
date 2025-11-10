@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd packages/fhevm-sdk && pnpm build && cd ../nextjs && pnpm build",
+  "devCommand": "cd packages/nextjs && pnpm dev",
+  "installCommand": "pnpm install",
+  "outputDirectory": "packages/nextjs/.next"
+}
