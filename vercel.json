@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd packages/fhevm-sdk && pnpm build && cd ../nextjs && pnpm build",
-  "devCommand": "cd packages/nextjs && pnpm dev",
+  "buildCommand": "pnpm --filter @fhevm-sdk build && pnpm --filter otc-marketplace-frontend build",
+  "devCommand": "pnpm --filter otc-marketplace-frontend dev",
   "installCommand": "pnpm install",
   "outputDirectory": "packages/nextjs/.next"
 }

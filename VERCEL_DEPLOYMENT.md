@@ -1,6 +1,8 @@
 # Vercel Deployment Guide
 
-## Option 1: Using Vercel Dashboard (Recommended)
+## Recommended: Deploy from Monorepo Root (Using vercel.json)
+
+This is the easiest method - the `vercel.json` is already configured.
 
 1. Go to https://vercel.com and sign in
 2. Click "Add New Project"
@@ -11,13 +13,12 @@
 - Select: **Next.js**
 
 ### Root Directory
-- Click "Edit" next to Root Directory
-- Set to: `packages/nextjs`
+- **IMPORTANT: Leave as `.` (root) - DO NOT change this**
+- The vercel.json will automatically handle the monorepo structure
 
 ### Build Settings
-- Build Command: `pnpm build`
-- Output Directory: `.next` (default)
-- Install Command: `pnpm install`
+- Leave all build settings as default
+- The vercel.json configures everything automatically
 
 ### Environment Variables
 Add these in the Vercel dashboard:
@@ -30,50 +31,55 @@ NEXT_PUBLIC_ORDERBOOK_ADDRESS=0x...
 
 5. Click "Deploy"
 
-## Option 2: Using Vercel CLI
+## Alternative: Deploy Nextjs Package Directly
+
+If you prefer to deploy only the nextjs package without the monorepo setup:
+
+1. In Vercel Dashboard, import the repo
+2. Set Root Directory to: `packages/nextjs`
+3. Build Command: `pnpm build`
+4. Output Directory: `.next`
+5. Install Command: `pnpm install`
+6. Add environment variables
+7. Deploy
+
+**Note**: This method won't build the @fhevm-sdk dependency automatically.
+
+## Using Vercel CLI
 
 1. Install Vercel CLI:
 ```bash
 npm i -g vercel
 ```
 
-2. Navigate to the Next.js directory:
-```bash
-cd packages/nextjs
-```
-
-3. Deploy:
+2. From repository root:
 ```bash
 vercel
 ```
 
-4. Follow prompts and set environment variables when asked
-
-## Option 3: Deploy from Monorepo Root
-
-If you want to deploy from root, the vercel.json is already configured.
-
-1. In Vercel Dashboard, import the repo
-2. Leave Root Directory as `.` (root)
-3. The vercel.json will handle the build automatically
-4. Add environment variables
-5. Deploy
+3. Follow prompts and set environment variables when asked
 
 ## Troubleshooting
 
 ### 404 Error
-- Make sure Root Directory is set to `packages/nextjs` in Vercel settings
-- Or ensure vercel.json is in the repository root
+- Ensure Root Directory is set to `.` (root) in Vercel settings
+- Check that vercel.json exists in the repository root
+- Verify the deployment completed successfully
 
-### Build Fails
+### Build Fails with "No such file or directory"
+- **Most common issue**: Root Directory is incorrectly set to `packages/nextjs`
+- **Fix**: Go to Project Settings → General → Root Directory → Set to `.` (root)
+- The vercel.json must run from the repository root to access all packages
+
+### Build Fails - General
 - Check that all environment variables are set
 - Verify pnpm is being used (should auto-detect from pnpm-workspace.yaml)
-- Check build logs in Vercel dashboard
+- Check build logs in Vercel dashboard for specific errors
 
 ### Module Not Found Errors
-- The @fhevm-sdk package may need to be built first
-- Ensure packages/fhevm-sdk/dist exists
-- May need to add a build script to handle monorepo dependencies
+- Ensure the build command built @fhevm-sdk first (check build logs)
+- The vercel.json handles building @fhevm-sdk before the Next.js app
+- Check that pnpm workspace is properly configured
 
 ## Post-Deployment
 
